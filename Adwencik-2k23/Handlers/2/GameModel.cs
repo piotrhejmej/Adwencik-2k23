@@ -48,7 +48,7 @@ namespace Adwencik_2k23.Handlers._2
             Amount = int.Parse(colorAmountSplit.First());
         }
 
-        private Dictionary<string, Colors> ColorNameEntryDictionary = new Dictionary<string, Colors>()
+        private readonly Dictionary<string, Colors> ColorNameEntryDictionary = new()
         {
             { "red", Colors.Red },
             { "green", Colors.Green },

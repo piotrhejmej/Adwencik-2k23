@@ -11,16 +11,11 @@ namespace Testy
         public void DayOne_Gorsza()
         {
             //Arrange
-            var dayOne = new DayOne();
             var expected = 142;
-            var input = @"1abc2
-pqr3stu8vwx
-a1b2c3d4e5f
-treb7uchet";
-            var parsed = new InputLoader().Load("one");
+            var parsed = InputLoader.Load("one");
 
             //Act
-            var result = dayOne.Pierwsze(parsed);
+            var result = DayOne.One(parsed);
 
             //Assert
             Assert.AreEqual(expected, result);
@@ -30,16 +25,11 @@ treb7uchet";
         public void DayOne_Lepsza()
         {
             //Arrange
-            var dayOne = new DayOne();
             var expected = 281;
-            var input = @"1abc2
-pqr3stu8vwx
-a1b2c3d4e5f
-treb7uchet";
-            var parsed = new InputLoader().Load("one");
+            var parsed = InputLoader.Load("one");
 
             //Act
-            var result = dayOne.Drugie(parsed);
+            var result = DayOne.Two(parsed);
 
             //Assert
             Assert.AreEqual(expected, result);

@@ -6,8 +6,6 @@ namespace Adwencik_2k23
     {
         static void Main(string[] args)
         {
-            var tday = new DayOne();
-
 
         }
     }
