@@ -24,7 +24,7 @@ namespace Adwencik_2k23.Handlers._3
                 .Where(n => n is PartNode)
                 .Select(n => n as PartNode)
                 .Select(n => model.GetNeighbouringPartNumbers(n!)
-                .Sum())
+                    .Sum())
                 .Sum();
 
         private static int SolveTwo(SchematicsModel model)
