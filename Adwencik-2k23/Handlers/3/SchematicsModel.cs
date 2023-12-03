@@ -14,7 +14,7 @@
         }
 
         public int[] GetNeighbouringPartNumbers(PartNode node)
-        => Enumerable.Range(-1, 3)
+            => Enumerable.Range(-1, 3)
                 .SelectMany(x => Enumerable.Range(-1, 3)
                 .Select(y =>
                     (x, y)
