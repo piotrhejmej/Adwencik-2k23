@@ -13,6 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\four.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\one.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
