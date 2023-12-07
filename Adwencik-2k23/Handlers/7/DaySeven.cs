@@ -4,32 +4,24 @@ namespace Adwencik_2k23.Handlers._7
 {
     public class DaySeven
     {
-        public static int One(string[] input)
+        public static double One(string[] input)
         {
             var model = new CamelokerModel(input);
-            return SolveOne(model);
+            return Solve(model, new HandsComparer());
         }
 
         public static double Two(string[] input)
         {
             var model = new CamelokerModel(input, GameType.WithJocks);
-            return SolveTwo(model);
+            return Solve(model, new HandsWithJocksComparer());
         }
 
-        private static int SolveOne(CamelokerModel model)
+        private static double Solve(CamelokerModel model, IComparer<Hand> comparer)
             => model
-                .Hands
-                .ToList()
-                .Order(new HandsComparer())
-                .Select((hand, index) => hand.Bid * (index + 1))
-                .Sum();
-
-        private static double SolveTwo(CamelokerModel model)
-            => model
-                .Hands
-                .ToList()
-                .Order(new HandsWithJocksComparer())
-                .Select((hand, index) => hand.Bid * (index + 1))
-                .Sum();
+                    .Hands
+                    .ToList()
+                    .Order(comparer)
+                    .Select((hand, index) => hand.Bid * (index + 1))
+                    .Sum();
     }
 }
