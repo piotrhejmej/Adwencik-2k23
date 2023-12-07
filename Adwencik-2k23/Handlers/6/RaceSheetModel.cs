@@ -28,10 +28,10 @@ namespace Adwencik_2k23.Handlers._6
                     .Select(c => c.Replace(" ", ""))
                     .Select(double.Parse);
 
-            Races = new List<RaceModel>()
-            {
-                new RaceModel(inputs.First(), inputs.Last())
-            }.ToArray();
+            Races =
+            [
+                new(inputs.First(), inputs.Last())
+            ];
         }
 
         public IEnumerable<IEnumerable<double>> GetPossibleRecordDistances()
@@ -42,17 +42,10 @@ namespace Adwencik_2k23.Handlers._6
                 );
     }
 
-    internal class RaceModel
+    internal class RaceModel(double time, double distance)
     {
-        public double Time { get; set; }
-        public double RecordDistance { get; set; }
-
-
-        public RaceModel(double time, double distance)
-        {
-            Time = time;
-            RecordDistance = distance;
-        }
+        public double Time { get; set; } = time;
+        public double RecordDistance { get; set; } = distance;
 
         public double GetPossibleDistance(double x)
             => (Time - x) * x;

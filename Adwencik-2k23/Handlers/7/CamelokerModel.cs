@@ -18,17 +18,12 @@ namespace Adwencik_2k23.Handlers._7
         Wrong = -1,
     }
 
-    internal class CamelokerModel
+    internal class CamelokerModel(string[] input, GameType gameType = GameType.Simple)
     {
-        public Hand[] Hands { get; set; }
-
-        public CamelokerModel(string[] input, GameType gameType = GameType.Simple)
-        {
-            Hands = input
+        public Hand[] Hands { get; set; } = input
                 .Select(l => l.Split(' '))
                 .Select(l => new Hand(l.First(), l.Last(), gameType))
                 .ToArray();
-        }
     }
 
     internal class Hand
@@ -52,7 +47,7 @@ namespace Adwencik_2k23.Handlers._7
                 HandValue = GetHandValueWithJocks(CardsWithJocks);
         }
 
-        private HandValue GetHandValue(CardValue[] cards)
+        private static HandValue GetHandValue(CardValue[] cards)
         {
             var groupCounts = cards
                 .GroupBy(c => c)
@@ -72,7 +67,7 @@ namespace Adwencik_2k23.Handlers._7
             };
         }
 
-        private HandValue GetHandValueWithJocks(CardWithJocks[] cards)
+        private static HandValue GetHandValueWithJocks(CardWithJocks[] cards)
         {
             var groupCounts = cards
                 .Where(r => r != CardWithJocks.J)
@@ -96,7 +91,7 @@ namespace Adwencik_2k23.Handlers._7
         }
 
 
-        private readonly Dictionary<char, CardValue> _stringToCardMap = new Dictionary<char, CardValue>()
+        private readonly Dictionary<char, CardValue> _stringToCardMap = new()
         {
             { '2', CardValue.n2 },
             { '3', CardValue.n3 },
@@ -113,7 +108,7 @@ namespace Adwencik_2k23.Handlers._7
             { 'A', CardValue.A },
         };
 
-        private readonly Dictionary<char, CardWithJocks> _stringToJokesCardMap = new Dictionary<char, CardWithJocks>()
+        private readonly Dictionary<char, CardWithJocks> _stringToJokesCardMap = new()
         {
             { '2', CardWithJocks.n2 },
             { '3', CardWithJocks.n3 },
