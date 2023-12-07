@@ -39,6 +39,7 @@
             return model.Steps.OrderBy(s => s.Value).First().Value;
         }
 
+        //Doesn't work
         private static double SolveTwo(AlmanacModel model)
         {
             var newBatches = model.StepBatches.ToList();
@@ -78,12 +79,6 @@
                         continue;
                     }
 
-                    //var partialyOverlapingMaps = matchingMapGroup
-                    //    .MapEntries.Where(m => (batch.From >= m.SourceRangeFrom && batch.From <= m.SourceRangeTo) ||
-                    //        (batch.To >= m.SourceRangeFrom && batch.To <= m.SourceRangeTo))
-                    //    .OrderByDescending(m => m.SourceRangeFrom)
-                    //    .ToList();
-
                     var upOverlappingMap = matchingMapGroup
                         .MapEntries.FirstOrDefault(m => (batch.From >= m.SourceRangeFrom && batch.From <= m.SourceRangeTo));
 
@@ -109,36 +104,6 @@
                         UpdateBatch(newBatch, downOverlappingMap, matchingMapGroup.ToEntry);
                         newBatches.Add(newBatch);
                     }
-
-                    //if (partialyOverlapingMaps.Any())
-                    //{
-                    //    var lowestLow = partialyOverlapingMaps.Min(c => c.SourceRangeFrom);
-                    //    var highestHigh = partialyOverlapingMaps.Max(c => c.SourceRangeTo);
-
-                    //    if (lowestLow > batch.From && highestHigh < batch.To)
-                    //    {
-                    //        var a = batch.From;
-                    //    }
-                    //}
-                    //foreach (var map in partialyOverlapingMaps)
-                    //{
-                    //    var newBatch = new StepBatchModel();
-                    //    if (batch.From >= map.SourceRangeFrom && batch.From <= map.SourceRangeTo)
-                    //    {
-                    //        newBatch.From = batch.From;
-                    //        newBatch.To = map.SourceRangeTo;
-                    //        batch.From = newBatch.To + 1;
-                    //    }
-                    //    else
-                    //    {
-                    //        newBatch.From = map.SourceRangeFrom;
-                    //        newBatch.To = batch.To;
-                    //        batch.To = newBatch.From - 1;
-                    //    }
-
-                    //    UpdateBatch(newBatch, map, matchingMapGroup.ToEntry);
-                    //    newBatches.Add(newBatch);
-                    //}
 
                     if (batch.To - batch.From <= 1)
                     {
