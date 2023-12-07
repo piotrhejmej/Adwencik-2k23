@@ -26,7 +26,7 @@ namespace Testy
         {
             //Arrange
             var expected = 281;
-            var parsed = InputLoader.Load("one");
+            var parsed = InputLoader.Load("one2");
 
             //Act
             var result = DayOne.Two(parsed);
