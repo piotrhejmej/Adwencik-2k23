@@ -8,10 +8,54 @@
 
             foreach (TSource item in source)
             {
-                checked { result *= selector(item); }
+                checked
+                { result *= selector(item); }
             }
 
             return result;
+        }
+
+        public static IEnumerable<IEnumerable<TSource>> BatchWhere<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+        {
+            List<TSource>? bucket = new List<TSource>();
+
+            foreach (var item in source)
+            {
+                bucket.Add(item);
+
+                if (!predicate(item))
+                    continue;
+
+                yield return bucket;
+
+                bucket = new List<TSource>();
+            }
+
+            if (bucket.Any())
+                yield return bucket;
+        }
+
+        public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(this IEnumerable<TSource> source, int size)
+        {
+            List<TSource>? bucket = new List<TSource>();
+            var count = 0;
+
+            foreach (var item in source)
+            {
+                count++;
+                bucket.Add(item);
+
+                if (count != size)
+                    continue;
+
+                yield return bucket;
+
+                count = 0;
+                bucket = new List<TSource>();
+            }
+
+            if (bucket.Any())
+                yield return bucket;
         }
     }
 }
