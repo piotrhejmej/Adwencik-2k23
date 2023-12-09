@@ -29,7 +29,7 @@
 
         private static long SolveTwo(NodeContainer model)
         {
-            var currents = model.Nodes.Where(n => n.Name.EndsWith("A")).ToList();
+            var currents = model.Nodes.Where(n => n.Name.EndsWith('A')).ToList();
 
             if (currents is null)
                 return -1;
@@ -67,10 +67,10 @@
 
         static long LCM(long[] numbers)
         {
-            return numbers.Aggregate(lcm);
+            return numbers.Aggregate(LCM);
         }
 
-        static long lcm(long a, long b)
+        static long LCM(long a, long b)
         {
             return Math.Abs(a * b) / GCD(a, b);
         }

@@ -1,11 +1,4 @@
-﻿using Adwencik_2k23.Handlers._6;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Adwencik_2k23.Handlers._9
+﻿namespace Adwencik_2k23.Handlers._9
 {
     public class DayNine
     {

@@ -45,7 +45,7 @@
             var newBatches = model.StepBatches.ToList();
             var processedBatches = new List<StepBatchModel>(newBatches);
 
-            while (newBatches.Any())
+            while (newBatches.Count != 0)
             {
                 newBatches = ProcessBatches(newBatches, model);
                 processedBatches.AddRange(newBatches);
@@ -87,9 +87,11 @@
 
                     if (upOverlappingMap is not null)
                     {
-                        var newBatch = new StepBatchModel();
-                        newBatch.From = batch.From;
-                        newBatch.To = upOverlappingMap.SourceRangeTo;
+                        var newBatch = new StepBatchModel
+                        {
+                            From = batch.From,
+                            To = upOverlappingMap.SourceRangeTo
+                        };
                         batch.From = newBatch.To + 1;
                         UpdateBatch(newBatch, upOverlappingMap, matchingMapGroup.ToEntry);
                         newBatches.Add(newBatch);
@@ -97,9 +99,11 @@
 
                     if (downOverlappingMap is not null)
                     {
-                        var newBatch = new StepBatchModel();
-                        newBatch.From = downOverlappingMap.SourceRangeFrom;
-                        newBatch.To = batch.To;
+                        var newBatch = new StepBatchModel
+                        {
+                            From = downOverlappingMap.SourceRangeFrom,
+                            To = batch.To
+                        };
                         batch.To = newBatch.From - 1;
                         UpdateBatch(newBatch, downOverlappingMap, matchingMapGroup.ToEntry);
                         newBatches.Add(newBatch);

@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace Adwencik_2k23.Handlers._7
+﻿namespace Adwencik_2k23.Handlers._7
 {
     public class DaySeven
     {

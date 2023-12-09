@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Adwencik_2k23.Handlers._7
+﻿namespace Adwencik_2k23.Handlers._7
 {
     internal class HandsComparer : IComparer<Hand>
     {

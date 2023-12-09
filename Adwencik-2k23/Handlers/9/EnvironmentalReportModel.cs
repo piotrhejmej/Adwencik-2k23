@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Adwencik_2k23.Handlers._9
+﻿namespace Adwencik_2k23.Handlers._9
 {
-    internal class EnvironmentalReportModel
+    internal class EnvironmentalReportModel(string[] input)
     {
-        public List<Row> Rows { get; set; }
-
-        public EnvironmentalReportModel(string[] input)
-        {
-            Rows = input
+        public List<Row> Rows { get; set; } = input
                 .Select(l => new Row(l))
                 .ToList();
-        }
     }
 
     internal class Row
@@ -30,7 +19,7 @@ namespace Adwencik_2k23.Handlers._9
                 .ToList();
 
             var firstRow = new List<long>(numbers);
-            DataSet = new List<List<long>>() { firstRow };
+            DataSet = [firstRow];
 
             var previousRow = firstRow;
 
@@ -38,7 +27,7 @@ namespace Adwencik_2k23.Handlers._9
             {
                 var newRow = new List<long>();
                 
-                for (int i = 1; i < previousRow.Count(); i++)
+                for (int i = 1; i < previousRow.Count; i++)
                 {
                     newRow.Add(previousRow[i] - previousRow[i - 1]);
                 }
