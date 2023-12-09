@@ -25,6 +25,12 @@
     <None Update="Resources\four.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\nine2.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\nine.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\one.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
