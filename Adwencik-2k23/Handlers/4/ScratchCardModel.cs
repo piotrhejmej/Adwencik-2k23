@@ -13,25 +13,26 @@
 
         public ScratchCardModel(string input)
         {
+            Count = 1;
             var splitByName = input.Split(':');
             Id = int.Parse(splitByName.First().Trim().Split(' ').Last());
             var splitByNumbers = splitByName.Last().Split('|');
 
             WiningNumbers = splitByNumbers.First()
-                .Trim()
-                .Split(' ')
-                .Where(number => !string.IsNullOrEmpty(number))
-                .Select(number => int.Parse(number))
-                .ToArray();
+                .ParseToIntArray();
 
             Numbers = splitByNumbers.Last()
-                .Trim()
+                .ParseToIntArray();
+        }
+    }
+
+    internal static class ScratchCardExtensions
+    {
+        internal static int[] ParseToIntArray(this string query)
+            => query.Trim()
                 .Split(' ')
                 .Where(number => !string.IsNullOrEmpty(number))
-                .Select(number => int.Parse(number))
+                .Select(int.Parse)
                 .ToArray();
-
-            Count = 1;
-        }
     }
 }
