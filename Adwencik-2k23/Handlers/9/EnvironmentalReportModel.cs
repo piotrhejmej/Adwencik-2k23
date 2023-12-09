@@ -34,7 +34,7 @@ namespace Adwencik_2k23.Handlers._9
 
             var previousRow = firstRow;
 
-            while (!previousRow.All(n => n == 0)) 
+            while (!previousRow.All(n => n is 0)) 
             {
                 var newRow = new List<long>();
                 
