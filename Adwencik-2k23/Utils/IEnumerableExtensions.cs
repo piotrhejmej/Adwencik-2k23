@@ -14,6 +14,18 @@
 
             return result;
         }
+        public static long Mul<TSource>(this IEnumerable<TSource> source, Func<TSource, long> selector)
+        {
+            long result = 1;
+
+            foreach (TSource item in source)
+            {
+                checked
+                { result *= selector(item); }
+            }
+
+            return result;
+        }
 
         public static IEnumerable<IEnumerable<TSource>> BatchWhere<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {

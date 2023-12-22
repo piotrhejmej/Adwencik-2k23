@@ -31,6 +31,9 @@
     <None Update="Resources\nine.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\nineteen.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\one.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
