@@ -38,7 +38,7 @@ namespace Adwencik_2k23.Handlers._10
 
             for (int x = 0; x < maxX; x++)
             {
-                var line = Cells.Where(c => c.X == x).OrderBy(c => c.Y).Select(c => c.Symbol);
+                var line = Cells.Where(c => c.X == x).OrderBy(c => c.Y).Select(c => c.IsPartOfLoop || c.IsOutsideOfLoop ? c.Symbol : c.OrgSymbol);
                 strings.Add(string.Join("", line));
             }
 
@@ -86,6 +86,7 @@ namespace Adwencik_2k23.Handlers._10
         public MapCellType Type { get; set; }
         public List<MapCellModel> NeighboursAtEnds { get; set; }
         public char Symbol { get; set; }
+        public char OrgSymbol { get; set; }
         public bool IsPartOfLoop { get; set; } = false;
         public bool IsOutsideOfLoop { get; set; } = false;
 
@@ -95,6 +96,7 @@ namespace Adwencik_2k23.Handlers._10
             Y = y;
             Type = _charToTypeDictionary[type];
             NeighboursAtEnds = [];
+            OrgSymbol = type;
             Symbol = _typeToBetterCharDictionary[Type];
         }
 
